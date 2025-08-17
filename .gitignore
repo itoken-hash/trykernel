@@ -1,6 +1,17 @@
+# IDE設定ファイル（Eclipseなど）
 .cproject
 .project
 .settings/
+
+# ビルド成果物
 Debug/
 Release/
-build
+build/
+
+# バイナリツール（elf2uf2）
+tools/elf2uf2
+
+# その他の成果物（任意で追加）
+*.elf
+*.uf2
+*.map

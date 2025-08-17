@@ -30,9 +30,16 @@ add_executable(try-kernel
     kernel/task_queue.c
     kernel/task_sync.c
     kernel/dispatch.S
+    kernel/interrupt.c
 )
 
 # Add include directory
 target_include_directories(try-kernel PRIVATE include)
 target_link_options(try-kernel PRIVATE -T ${CMAKE_SOURCE_DIR}/linker/pico_memmap.ld)
 set_target_properties(${TARGET_NAME} PROPERTIES LINK_DEPENDS linker/pico_memmap.ld)
+
+add_custom_command(
+    TARGET try-kernel POST_BUILD
+    COMMAND ${CMAKE_SOURCE_DIR}/tools/elf2uf2 try-kernel.elf trykernel.uf2
+    COMMENT "Converting ELF to UF2"
+)

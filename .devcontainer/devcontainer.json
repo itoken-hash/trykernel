@@ -1,0 +1,13 @@
+{
+  "name": "TryKernel Dev",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "workspaceFolder": "/workspace/trykernel",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace/trykernel,type=bind"
+  ],
+  "containerEnv": {
+    "PICO_SDK_PATH": "/workspace/pico-sdk"
+  }
+}
